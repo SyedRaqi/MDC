@@ -1,78 +1,145 @@
-<<<<<<< HEAD
-# Madeena Welfare Society
+<div align="center">
 
-A bilingual (English and Urdu) public website foundation for Madeena Welfare Society, Bhatkal, built with Next.js, React, TypeScript, Tailwind CSS, and Lucide React.
+<img src="madeena-banner.svg" alt="Madeena Welfare Society, Bhatkal: animated 3D rotating eight-pointed star" width="100%"/>
 
-## Current platform
+</div>
 
-- Cinematic, database-aware community newsroom homepage at `/` and `/en`
-- True RTL Urdu newsroom at `/ur`
-- Featured story, latest ticker, Today in Bhatkal counters, editorial story grid, What's Happening timeline, notices, photo stories, programs and newsroom footer
-- Public news archive at `/en/news` and `/ur/news`
-- Website search at `/en/search` and `/ur/search`, covering updates, events, notices and programs
-- Public English and Urdu routes for About, Programs, Updates, Events, Gallery, Notices, Team, and Contact
-- Database-backed detail routes for published Programs, Updates, and Events
-- Protected admin CMS for Programs, Updates, Events, Gallery, Notices, Team, Messages, and Settings
-- Protected admin CMS for editorial flags, Community Stories, and Photo Stories
-- Accessible semantic markup, responsive layouts, metadata, and placeholder contact details
-- Production-ready Next.js configuration and `.env.local.example`
+<img src="madeena-divider.svg" alt="" width="100%"/>
 
-Content not yet officially supplied is deliberately marked as sample or placeholder content. No official phone numbers, addresses, people, registration details, achievements, or statistics have been invented.
+<img src="h-about.svg" alt="About" width="100%"/>
 
-## Run locally
+The public website of **Madeena Welfare Society, Bhatkal**. It is fully bilingual, in **English** and **Urdu** (with true right-to-left layout), and works as a living community newsroom: staff publish stories, events, notices and photo stories through a protected admin CMS, and the public site updates from the database.
+
+> 🛡️ **Honest by design.** Anything the Society has not officially supplied is labeled as sample content. No phone numbers, addresses, people, registration details, achievements or statistics are invented. When the database has no published records, the newsroom shows a visible `DEMO CONTENT` label.
+
+<img src="h-features.svg" alt="Features" width="100%"/>
+
+<img src="features.svg" alt="Newsroom, Urdu RTL, Search, Admin CMS, Gallery, Secure access" width="100%"/>
+
+<details>
+<summary><b>✦ Full feature list</b></summary>
+
+<br/>
+
+| 📰 Public newsroom | 🛠️ Admin CMS |
+| :--- | :--- |
+| Cinematic homepage at `/` and `/en` | Programs, Updates and Events |
+| True RTL Urdu newsroom at `/ur` | Gallery with direct image upload |
+| Featured story and latest-news ticker | Notices, Team and Messages |
+| *Today in Bhatkal* counters | Site Settings |
+| Editorial story grid and *What's Happening* timeline | Editorial flags: featured, breaking, pinned |
+| Notices, photo stories and programs | Community Stories and Photo Stories |
+| News archive and site-wide search | Admin-only access through Supabase Auth |
+
+Also included: accessible semantic markup, responsive layouts, per-page metadata, generated `sitemap.xml` and `robots.txt`, and a production-ready Next.js configuration.
+
+</details>
+
+<img src="h-stack.svg" alt="Tech stack" width="100%"/>
+
+<img src="stack.svg" alt="Next.js, React, TypeScript, Tailwind CSS, Supabase, Vercel" width="100%"/>
+
+<img src="h-architecture.svg" alt="Architecture" width="100%"/>
+
+<img src="assets/architecture.svg" alt="Architecture: the browser talks to the Next.js app, which talks to Supabase for the database, auth and storage" width="100%"/>
+
+<img src="h-quickstart.svg" alt="Quick start" width="100%"/>
+
+<img src="terminal.svg" alt="Terminal showing: git clone, npm install, copy the env file, npm run dev" width="100%"/>
 
 ```bash
-npm install
+git clone https://github.com/SyedRaqi/MDC.git
+cd MDC && npm install
+cp .env.local.example .env.local
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open <http://localhost:3000>. To check a production build, run `npm run lint`, `npm run build` and `npm run start`.
 
-## Verify production output
+<img src="h-supabase.svg" alt="Supabase and deploy" width="100%"/>
 
-```bash
-npm run lint
-npm run build
-npm run start
-```
-
-## Supabase integration
-
-Create `.env.local` from `.env.local.example`:
+**1. Environment.** Create `.env.local` from `.env.local.example`:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=your-project-url
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-Never expose a service-role key in client code or commit `.env.local`.
+> ⚠️ Never put a service-role key in client code, and never commit `.env.local`.
 
-Apply `supabase/migrations/001_initial_schema.sql` and then `supabase/migrations/002_editorial_platform.sql` in the Supabase SQL editor. The second migration adds featured, breaking, pinned, author and subtitle fields to updates, community story and photo story tables with RLS, and the `news-images`, `photo-stories`, and `site-assets` storage buckets with admin-only write policies. Public reads are limited to active/published records where appropriate. Admin writes require a Supabase Auth user whose `user_metadata.role` is exactly `admin`.
+**2. Migrations.** Apply these in order in the Supabase SQL editor:
 
-Create an administrator in Supabase Auth, then set the user metadata to:
+- `supabase/migrations/001_initial_schema.sql`
+- `supabase/migrations/002_editorial_platform.sql`
 
-```json
-{ "role": "admin" }
+The second migration adds the editorial fields, the community story and photo story tables with row-level security, and the `news-images`, `photo-stories` and `site-assets` storage buckets with admin-only write policies. Public reads are limited to active or published records.
+
+**3. Admin user.** Create a user in Supabase Auth and set its metadata to exactly `{ "role": "admin" }`.
+
+**4. Auth URLs.** Add your local URL and your deployed Vercel URL, then sign in at `/admin/login`.
+
+<details>
+<summary><b>✦ Gallery uploads and storage buckets</b></summary>
+
+<br/>
+
+The Gallery admin uploads straight to the `gallery` Supabase Storage bucket. It accepts **JPEG, PNG and WebP up to 10 MB**, saves the public URL into the gallery table, and keeps an image-URL fallback. The migrations also create the `society-images`, `gallery`, `event-posters`, `documents` and `team-photos` buckets, each with policies.
+
+</details>
+
+**5. Deploy to Vercel.** Add these environment variables to the project:
+
+| Variable | Purpose |
+| :--- | :--- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Your Supabase publishable key |
+| `NEXT_PUBLIC_SITE_URL` | The production domain, used for the sitemap, robots, canonical links and sign-out redirects |
+
+<img src="h-routes.svg" alt="Routes" width="100%"/>
+
+| Area | Pattern | Notes |
+| :--- | :--- | :--- |
+| 🌐 Public | `/en/...` and `/ur/...` | About, Programs, Updates, Events, Gallery, Notices, Team, Contact, News, Search |
+| 🔐 Admin | `/admin/...` | Requires authentication; login at `/admin/login` |
+| 🤖 Generated | `/sitemap.xml`, `/robots.txt` | Created automatically |
+
+Detail pages for published Programs, Updates and Events are database-backed.
+
+<details>
+<summary><b>✦ Project structure</b></summary>
+
+```text
+MDC/
+├── app/                  # Next.js routes: public /en, /ur and /admin
+├── components/           # Reusable UI components
+├── lib/                  # Shared helpers and Supabase clients
+├── public/               # Static assets
+├── supabase/
+│   └── migrations/       # SQL schema and editorial platform
+├── proxy.ts              # Request proxy
+├── next.config.ts
+├── eslint.config.mjs
+├── postcss.config.mjs
+├── tsconfig.json
+└── package.json
 ```
 
-Configure Auth URL settings with the local site URL and the deployed Vercel URL. The admin login is `/admin/login`.
+</details>
 
-The Gallery admin supports direct uploads to the `gallery` Supabase Storage bucket. It accepts JPEG, PNG, and WebP files up to 10 MB, saves the public Storage URL into the gallery table, and also keeps an image URL fallback. The migration includes `society-images`, `gallery`, `event-posters`, `documents`, and `team-photos` buckets with policies.
+<details>
+<summary><b>✦ Still needed before launch</b></summary>
 
-When Supabase has no published records, the public newsroom displays clearly labeled `DEMO CONTENT` so the layout can be reviewed without implying official achievements, statistics, contacts or events. Replace demo records through the admin CMS before launch.
+<br/>
 
-## Information still required
+- [ ] Approved logo
+- [ ] Official Urdu and English copy
+- [ ] Address, phone and email
+- [ ] Social links
+- [ ] Team details
+- [ ] Permitted photographs
+- [ ] Administrator account details
 
-Before publishing dynamic content, collect the society's approved logo, official Urdu and English copy, address, phone, email, social links, team details, permitted photographs, and administrator account information. These should be entered through the CMS once the Supabase admin layer is connected.
+</details>
 
-## Deployment
-
-Deploy to Vercel and add `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, and `NEXT_PUBLIC_SITE_URL` to the project's Environment Variables. Set `NEXT_PUBLIC_SITE_URL` to the production domain so sitemap, robots, canonical links, and sign-out redirects use the correct host.
-
-## Routes
-
-Public pages use `/en/...` and `/ur/...`. Admin pages use `/admin/...` and require authentication. `/sitemap.xml` and `/robots.txt` are generated automatically.
-=======
-# Demo
-Demo website
->>>>>>> 88cd1334cf24a3f4715bc32665170a48b9d4e365
+<img src="assets/footer.svg" alt="Madeena Welfare Society, Bhatkal. Built by Syed Raqi. Released under the Unlicense." width="100%"/>
