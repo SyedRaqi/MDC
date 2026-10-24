@@ -142,4 +142,4 @@ MDC/
 
 </details>
 
-<img src="assets/footer.svg" alt="Madeena Welfare Society, Bhatkal. Built by Syed Raqi. Released under the Unlicense." width="100%"/>
+<img src="footer.svg" alt="Madeena Welfare Society, Bhatkal. Built by Syed Raqi. Released under the Unlicense." width="100%"/>
