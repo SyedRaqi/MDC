@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="madeena-banner.svg" alt="Madeena Welfare Society, Bhatkal: animated 3D rotating eight-pointed star" width="100%"/>
+<img src="madeena-banner (1).svg" alt="Madeena Welfare Society, Bhatkal: animated 3D rotating eight-pointed star" width="100%"/>
 
 </div>
 
-<img src="madeena-divider.svg" alt="" width="100%"/>
+<img src="madeena-divider (1).svg" alt="" width="100%"/>
 
 <img src="h-about.svg" alt="About" width="100%"/>
 
