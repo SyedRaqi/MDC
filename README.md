@@ -14,9 +14,9 @@ The public website of **Madeena Welfare Society, Bhatkal**. It is fully bilingua
 
 <table>
 <tr>
-<td width="33%"><img src="assets/mdc-pro-still-news.jpg" alt="News: the newsroom" width="100%"/></td>
-<td width="33%"><img src="assets/mdc-pro-still-events.jpg" alt="Events: programs and events" width="100%"/></td>
-<td width="33%"><img src="assets/mdc-pro-still-gallery.jpg" alt="Gallery: photo stories" width="100%"/></td>
+<td width="33%"><img src="mdc-pro-still-news.jpg" alt="News: the newsroom" width="100%"/></td>
+<td width="33%"><img src="mdc-pro-still-events.jpg" alt="Events: programs and events" width="100%"/></td>
+<td width="33%"><img src="mdc-pro-still-gallery.jpg" alt="Gallery: photo stories" width="100%"/></td>
 </tr>
 </table>
 
