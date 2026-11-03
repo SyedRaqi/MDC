@@ -1,27 +1,34 @@
 <div align="center">
 
-<img src="madeena-banner (1).svg" alt="Madeena Welfare Society, Bhatkal: animated 3D rotating eight-pointed star" width="100%"/>
+<img src="mdc-pro-hero.jpg" alt="Madeena Welfare Society, Bhatkal: a mosque and palms against a golden sunset over the sea" width="100%"/>
 
 </div>
 
-<img src="madeena-divider (1).svg" alt="" width="100%"/>
+<img src="mdc-pro-titlecard.svg" alt="A living community newsroom, in English and Urdu" width="100%"/>
 
-<img src="h-about.svg" alt="About" width="100%"/>
+<img src="mdc-pro-h-about.svg" alt="About" width="100%"/>
 
 The public website of **Madeena Welfare Society, Bhatkal**. It is fully bilingual, in **English** and **Urdu** (with true right-to-left layout), and works as a living community newsroom: staff publish stories, events, notices and photo stories through a protected admin CMS, and the public site updates from the database.
 
-> 🛡️ **Honest by design.** Anything the Society has not officially supplied is labeled as sample content. No phone numbers, addresses, people, registration details, achievements or statistics are invented. When the database has no published records, the newsroom shows a visible `DEMO CONTENT` label.
+> **Honest by design.** Anything the Society has not officially supplied is labeled as sample content. No phone numbers, addresses, people, registration details, achievements or statistics are invented. When the database has no published records, the newsroom shows a visible `DEMO CONTENT` label.
 
-<img src="h-features.svg" alt="Features" width="100%"/>
+<table>
+<tr>
+<td width="33%"><img src="assets/mdc-pro-still-news.jpg" alt="News: the newsroom" width="100%"/></td>
+<td width="33%"><img src="assets/mdc-pro-still-events.jpg" alt="Events: programs and events" width="100%"/></td>
+<td width="33%"><img src="assets/mdc-pro-still-gallery.jpg" alt="Gallery: photo stories" width="100%"/></td>
+</tr>
+</table>
 
-<img src="features.svg" alt="Newsroom, Urdu RTL, Search, Admin CMS, Gallery, Secure access" width="100%"/>
+<sub>Illustrative artwork only. It does not depict real people, places or events of the Society.</sub>
 
-<details>
-<summary><b>✦ Full feature list</b></summary>
+<img src="mdc-pro-divider.svg" alt="" width="100%"/>
 
-<br/>
+<img src="mdc-pro-h-features.svg" alt="Features" width="100%"/>
 
-| 📰 Public newsroom | 🛠️ Admin CMS |
+<img src="mdc-pro-features.svg" alt="Newsroom, Urdu RTL, Search, Admin CMS, Gallery, Secure access" width="100%"/>
+
+| Public newsroom | Admin CMS |
 | :--- | :--- |
 | Cinematic homepage at `/` and `/en` | Programs, Updates and Events |
 | True RTL Urdu newsroom at `/ur` | Gallery with direct image upload |
@@ -33,19 +40,23 @@ The public website of **Madeena Welfare Society, Bhatkal**. It is fully bilingua
 
 Also included: accessible semantic markup, responsive layouts, per-page metadata, generated `sitemap.xml` and `robots.txt`, and a production-ready Next.js configuration.
 
-</details>
+<img src="mdc-pro-h-bilingual.svg" alt="English and Urdu" width="100%"/>
 
-<img src="h-stack.svg" alt="Tech stack" width="100%"/>
+<img src="mdc-pro-bilingual.svg" alt="The same page in English, left to right, and in Urdu, right to left" width="100%"/>
 
-<img src="stack.svg" alt="Next.js, React, TypeScript, Tailwind CSS, Supabase, Vercel" width="100%"/>
+English pages live under `/en` and Urdu pages under `/ur`. The Urdu edition is a true right-to-left layout, so navigation and page structure mirror along with the text.
 
-<img src="h-architecture.svg" alt="Architecture" width="100%"/>
+<img src="mdc-pro-h-architecture.svg" alt="Architecture" width="100%"/>
 
-<img src="assets/architecture.svg" alt="Architecture: the browser talks to the Next.js app, which talks to Supabase for the database, auth and storage" width="100%"/>
+<img src="mdc-pro-architecture.svg" alt="The browser talks to the Next.js app, which talks to Supabase for the database, auth and storage" width="100%"/>
 
-<img src="h-quickstart.svg" alt="Quick start" width="100%"/>
+<img src="mdc-pro-h-stack.svg" alt="Tech stack" width="100%"/>
 
-<img src="terminal.svg" alt="Terminal showing: git clone, npm install, copy the env file, npm run dev" width="100%"/>
+<img src="mdc-pro-stack.svg" alt="Next.js, React, TypeScript, Tailwind CSS, Supabase, Vercel" width="100%"/>
+
+<img src="mdc-pro-h-quickstart.svg" alt="Quick start" width="100%"/>
+
+<img src="mdc-pro-terminal.svg" alt="Terminal showing: git clone, npm install, copy the env file, npm run dev" width="100%"/>
 
 ```bash
 git clone https://github.com/SyedRaqi/MDC.git
@@ -56,7 +67,9 @@ npm run dev
 
 Open <http://localhost:3000>. To check a production build, run `npm run lint`, `npm run build` and `npm run start`.
 
-<img src="h-supabase.svg" alt="Supabase and deploy" width="100%"/>
+<img src="mdc-pro-h-supabase.svg" alt="Supabase and deploy" width="100%"/>
+
+<img src="mdc-pro-setup.svg" alt="Five setup steps: environment, migrations, admin user, auth URLs, deploy" width="100%"/>
 
 **1. Environment.** Create `.env.local` from `.env.local.example`:
 
@@ -66,7 +79,7 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-> ⚠️ Never put a service-role key in client code, and never commit `.env.local`.
+> Never put a service-role key in client code, and never commit `.env.local`.
 
 **2. Migrations.** Apply these in order in the Supabase SQL editor:
 
@@ -80,7 +93,7 @@ The second migration adds the editorial fields, the community story and photo st
 **4. Auth URLs.** Add your local URL and your deployed Vercel URL, then sign in at `/admin/login`.
 
 <details>
-<summary><b>✦ Gallery uploads and storage buckets</b></summary>
+<summary><b>Gallery uploads and storage buckets</b></summary>
 
 <br/>
 
@@ -96,18 +109,20 @@ The Gallery admin uploads straight to the `gallery` Supabase Storage bucket. It 
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Your Supabase publishable key |
 | `NEXT_PUBLIC_SITE_URL` | The production domain, used for the sitemap, robots, canonical links and sign-out redirects |
 
-<img src="h-routes.svg" alt="Routes" width="100%"/>
+<img src="mdc-pro-h-routes.svg" alt="Routes" width="100%"/>
+
+<img src="mdc-pro-routes.svg" alt="Route map: public /en and /ur pages, protected /admin pages, generated sitemap and robots" width="100%"/>
 
 | Area | Pattern | Notes |
 | :--- | :--- | :--- |
-| 🌐 Public | `/en/...` and `/ur/...` | About, Programs, Updates, Events, Gallery, Notices, Team, Contact, News, Search |
-| 🔐 Admin | `/admin/...` | Requires authentication; login at `/admin/login` |
-| 🤖 Generated | `/sitemap.xml`, `/robots.txt` | Created automatically |
+| Public | `/en/...` and `/ur/...` | About, Programs, Updates, Events, Gallery, Notices, Team, Contact, News, Search |
+| Admin | `/admin/...` | Requires authentication; login at `/admin/login` |
+| Generated | `/sitemap.xml`, `/robots.txt` | Created automatically |
 
 Detail pages for published Programs, Updates and Events are database-backed.
 
 <details>
-<summary><b>✦ Project structure</b></summary>
+<summary><b>Project structure</b></summary>
 
 ```text
 MDC/
@@ -127,10 +142,9 @@ MDC/
 
 </details>
 
-<details>
-<summary><b>✦ Still needed before launch</b></summary>
+<img src="mdc-pro-h-launch.svg" alt="Launch checklist" width="100%"/>
 
-<br/>
+Collect these from the Society, then enter them through the CMS:
 
 - [ ] Approved logo
 - [ ] Official Urdu and English copy
@@ -140,6 +154,4 @@ MDC/
 - [ ] Permitted photographs
 - [ ] Administrator account details
 
-</details>
-
-<img src="footer.svg" alt="Madeena Welfare Society, Bhatkal. Built by Syed Raqi. Released under the Unlicense." width="100%"/>
+<img src="mdc-pro-footer.svg" alt="Madeena Welfare Society, Bhatkal. Built by Syed Raqi." width="100%"/>
